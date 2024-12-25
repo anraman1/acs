@@ -22,4 +22,4 @@
       msg: "{{ acs_status }}"
   - name: acs operator is successfully installed  
     debug:
-      msg: "{{ acs_status.resources | selectatt('status.phase', 'equalto', 'Succeeded') | map(attribute='metadata.name') | list }}"
+      msg: "{{ acs_status.resources | selectattr('status.phase', 'equalto', 'Succeeded') | map(attribute='metadata.name') | list }}"
