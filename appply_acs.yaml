@@ -1,0 +1,23 @@
+--- 
+- name: Advance cluster security - init bundle operation
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ecslab_passwd: "ecslab"
+  tasks:
+  - name: Login to ocp
+    shell: oc login https://api-int.lab.ocp.lan:6443 -u ecslab -p "{{ ecslab_passwd }}" --kubeconfig=ecslab-kubeconfig --insecure-skip-tls-verify
+  - name: Get Advance cluster security operator CSV status
+    k8s_info:
+      api_version: v1
+      kind: cluserserviceversion  
+      namespace: rhacs-operator
+      label_selectors:
+        - app=rhacs-operator
+    register: acs_status
+  - name: acs status
+    debug: 
+      msg: "{{ acs_status }}"
+  - name: acs operator is successfully installed  
+    debug:
+      msg: "{{ acs_status.resources | selectatt('status.phase', 'equalto', 'Succeeded') | map(attribute='metadata.name') | list }}"
