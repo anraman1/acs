@@ -10,7 +10,6 @@
   - name: import acs operator roles
     import_role:
       name: operator_status
-  - name: import  init-bundle roles
+  - name: import init-bundle roles
     import_role:
       name: init_bundle
- 
