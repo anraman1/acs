@@ -13,7 +13,7 @@
       kind: cluserserviceversion  
       namespace: rhacs-operator
       label_selectors:
-        - app=rhacs-operator
+        - operators.coreos.com/rhacs-operator.rhacs-operator
     environment:
       KUBECONFIG: ecslab-kubeconfig
     register: acs_status
