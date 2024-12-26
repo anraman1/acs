@@ -21,5 +21,8 @@
     debug: 
       msg: "{{ acs_status }}"
   - name: acs operator is successfully installed  
-    debug:
-      msg: "{{ acs_status.resources | selectattr('status.phase', 'equalto', 'Succeeded') | map(attribute='metadata.name') | list }}"
+    assert:
+       that:
+        - acs_status.resources | selectattr('status.phase', 'equalto', 'Succeeded') | list | count > 0 
+       fail_msg: "ACS operator is not installed successfully"
+       success_msg: "ACS operator is installed successfully"
