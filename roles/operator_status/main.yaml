@@ -1,0 +1,19 @@
+  - name: Get Advance cluster security operator CSV status
+    k8s_info:
+      api_version: operators.coreos.com/v1alpha1
+      kind: ClusterServiceVersion  
+      namespace: rhacs-operator
+      label_selectors:
+        - operators.coreos.com/rhacs-operator.rhacs-operator
+    environment:
+      KUBECONFIG: ecslab-kubeconfig
+    register: acs_status
+  - name: acs status
+    debug: 
+      msg: "{{ acs_status }}"
+  - name: acs operator is successfully installed  
+    assert:
+       that:
+        - acs_status.resources | selectattr('status.phase', 'equalto', 'Succeeded') | list | count > 0 
+       fail_msg: "ACS operator is not installed successfully"
+       success_msg: "ACS operator is installed successfully"
