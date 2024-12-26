@@ -8,9 +8,6 @@
     environment:
       KUBECONFIG: ecslab-kubeconfig
     register: acs_status
-  - name: acs status
-    debug: 
-      msg: "{{ acs_status }}"
   - name: acs operator is successfully installed  
     assert:
        that:
