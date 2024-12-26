@@ -9,8 +9,8 @@
     shell: oc login https://api-int.lab.ocp.lan:6443 -u ecslab -p "{{ ecslab_passwd }}" --kubeconfig=ecslab-kubeconfig --insecure-skip-tls-verify
   - name: Get Advance cluster security operator CSV status
     k8s_info:
-      api_version: v1
-      kind: cluserserviceversion  
+      api_version: operators.coreos.com/v1alpha1
+      kind: ClusterServiceVersion  
       namespace: rhacs-operator
       label_selectors:
         - operators.coreos.com/rhacs-operator.rhacs-operator
