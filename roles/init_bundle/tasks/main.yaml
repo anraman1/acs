@@ -44,7 +44,7 @@
   register: init_bundle
 - name: get the init-bundle
   debug:
-    msg: "{{ init_bundle.json }}"
+    msg: "{{ init_bundle.json.kubectlBundle}}"
 - name: get the credintials type
   uri:
     url:  https://192.168.34.21/api/controller/v2/credential_types/?name=ecs_init_bundle
@@ -68,7 +68,7 @@
       name: "ecs_init_bundle"
       credential_type: "{{ cred_type.json.results[0].id }}"
       data: 
-        init_bundle: "{{ init_bundle.json.id }}"
+        init_bundle: "{{ init_bundle.json.kubectlBundle }}"
     user: admin
     password: db
     force_basic_auth: true
