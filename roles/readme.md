@@ -1,4 +1,4 @@
-## Following ansible task to validate the acs opertor and to create a init-bundle
+## The following Ansible task validates the ACS Operator installation and creates an init-bundle
 
 # extra_vars 
   
