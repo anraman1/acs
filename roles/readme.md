@@ -1,6 +1,6 @@
 ## The following Ansible task validates the ACS Operator installation and creates an init-bundle
 
-# extra_vars 
+## extra_vars 
   
   - by default, it will create a init-bundle as init_bundle_{ocp_cluster_name}
   - if you want custom name, please pass extra_vars: \
