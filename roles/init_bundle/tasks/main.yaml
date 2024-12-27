@@ -22,6 +22,8 @@
       Content-Type: "application/json"
     user: admin
     password: "{{ admin_passwd }}"
+    force_basic_auth: true
+    body_format: json
     validate_certs: no
   register: acs_token
 - name: acs admin token
