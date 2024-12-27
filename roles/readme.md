@@ -9,7 +9,7 @@
   - same format will be used when creating init-bundle-credential in AAP \
     ecs_init_bundle_{ocp_cluster_name}_{init_bundle_name} when passing extra_vars \
     else \
-    ecs_init_bundle_{ocp_cluster_name} \
+    ecs_init_bundle_{ocp_cluster_name} 
   
   ## ansible credential type
 
