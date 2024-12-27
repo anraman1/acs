@@ -68,6 +68,7 @@
       name: "ecs_init_bundle"
       credential_type: "{{ cred_type.json.results[0].id }}"
       user: "admin"
+      organization: "Default"
       inputs: 
         init_bundle: "{{ init_bundle.json.kubectlBundle }}"
     user: admin
