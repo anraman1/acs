@@ -42,3 +42,22 @@
     validate_certs: no
     body_format: json
   register: init_bundle
+- name: get the credintials type
+  uri:
+    url:  https://192.168.34.21/api/controller/v2/credential_types/?name=ecs_init_bundle
+    method: GET
+    user: admin
+    password: db
+    headers:
+      content-type: "application/json"
+    validate_certs: no
+    body_format: json
+  register: cred_type
+- name: get the credintials type
+  debug:
+    msg: "{{ cred_type.json.results[0].id }}"
+
+
+
+
+ 
