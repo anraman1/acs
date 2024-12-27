@@ -62,7 +62,7 @@
     msg: "{{ cred_type.json.results[0].id }}"
 - name: create init-bundle credentials
   uri:
-    url:  https://192.168.34.21/api/controller/v2/credentials
+    url:  https://192.168.34.21/api/controller/v2/credentials/
     method: POST
     body: 
       name: "ecs_init_bundle"
