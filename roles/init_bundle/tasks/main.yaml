@@ -31,11 +31,10 @@
     msg: "{{ acs_token.json.token }}"
 - name: create init-bundle
   uri:
-    url:  https://central-rhacs-operator.apps.lab.ocp.lan/v1/initbundle
+    url:  https://central-rhacs-operator.apps.lab.ocp.lan/v1/init-bundle
     method: POST  
     body: 
-      name: "init_bundle"
-      description: "init bundle"
+      name: "ocp_lab"
     headers:
       Content-Type: "application/json"
       accept: "application/json"
