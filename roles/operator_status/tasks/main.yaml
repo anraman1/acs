@@ -11,7 +11,7 @@
     k8s_info:
       api_version: operators.coreos.com/v1alpha1
       kind: ClusterServiceVersion  
-      namespace: rhacs-operator
+      namespace: ocp-rhacs-operator
       label_selectors:
         - operators.coreos.com/rhacs-operator.rhacs-operator
     environment:
