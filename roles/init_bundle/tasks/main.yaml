@@ -32,7 +32,7 @@
     url:  https://central-rhacs-operator.apps.lab.ocp.lan/v1/initbundle
     method: POST  
     body: 
-      name: init-bundle
+      name: "init-bundle"
       description: "init bundle"
     headers:
       Content-Type: "application/json"
