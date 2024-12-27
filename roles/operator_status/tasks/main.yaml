@@ -13,7 +13,7 @@
       kind: ClusterServiceVersion  
       namespace: ocp-rhacs-operator
       label_selectors:
-        - operators.coreos.com/rhacs-operator.rhacs-operator
+        - olm.copiedFrom=rhacs-operator
     environment:
       KUBECONFIG: ecslab-kubeconfig
     until: acs_status.resources | selectattr('status.phase', 'equalto', 'Succeeded') | list | count > 0
