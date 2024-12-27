@@ -65,7 +65,7 @@
     url:  https://192.168.34.21/api/controller/v2/credentials/
     method: POST
     body: 
-      name: "ecs_init_bundle_{{ ocp_cluster_name }}_{{ init_bundle_name }}{% if init_bundle_name }_{{ init_bundle_name }}{% endif %}"
+      name: "ecs_init_bundle_{{ ocp_cluster_name }}{% if init_bundle_name %}_{{ init_bundle_name }}{% endif %}"
       credential_type: "{{ cred_type.json.results[0].id }}"
       organization: 1
       inputs: 
