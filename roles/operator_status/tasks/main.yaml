@@ -22,7 +22,7 @@
     failed_when: false
     register: acs_status
 
-  - name: acs operator is successfully installed  
+  - name: acs operator's status
     assert:
        that:
         - acs_status.resources | selectattr('status.phase', 'equalto', 'Succeeded') | list | count > 0 
