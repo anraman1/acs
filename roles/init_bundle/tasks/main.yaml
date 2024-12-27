@@ -1,4 +1,41 @@
 ---
-- name: init-bundle
+- name: get ACS admin token
+  k8s_info: 
+    api_version: v1
+    kind: Secret
+    namespace: rhacs-operator
+    name: central-htpasswd
+    environment:
+      KUBECONFIG: ecslab-kubeconfig
+  register: acs_secret
+- name: acs admin password
+  set_fact:
+    admin_passwd: "{{ acs_secret.resources[0].data.password | b64decode }}"
+- name: acs admin token
+  uri:
+    url:  https://central-rhacs-operator.apps.lab.ocp.lan/v1/apitokens/generate
+    method: POST  
+    body: 
+      name: admin
+      role: Admin  
+    headers:
+      Content-Type: "application/json"
+    user: admin
+    password: "{{ admin_passwd }}"
+    validate_certs: no
+  register: acs_token
+- name: acs admin token
   debug:
-    msg: "init-bundle"
+    msg: "{{ acs_token.json.token }}"
+- name: create init-bundle
+  uri:
+    url:  https://central-rhacs-operator.apps.lab.ocp.lan/v1/initbundle
+    method: POST  
+    body: 
+      name: init-bundle
+      description: "init bundle
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer {{ acs_token.json.token }}"
+    validate_certs: no
+  register: init_bundle
