@@ -1,3 +1,12 @@
+  - name: create ocp-rhacs-operator namespace
+    k8s:
+      definition:
+        apiVersion: v1
+        kind: Namespace
+        metadata:
+          name: ocp-rhacs-operator
+    environment:
+      KUBECONFIG: ecslab-kubeconfig 
   - name: Get Advance cluster security operator CSV status
     k8s_info:
       api_version: operators.coreos.com/v1alpha1
@@ -7,7 +16,12 @@
         - operators.coreos.com/rhacs-operator.rhacs-operator
     environment:
       KUBECONFIG: ecslab-kubeconfig
+    until: acs_status.resources | selectattr('status.phase', 'equalto', 'Succeeded') | list | count > 0
+    retries: 10
+    delay: 10
+    failed_when: false
     register: acs_status
+
   - name: acs operator is successfully installed  
     assert:
        that:
