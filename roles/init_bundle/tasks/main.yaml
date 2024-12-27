@@ -31,14 +31,14 @@
     msg: "{{ acs_token.json.token }}"
 - name: create init-bundle
   uri:
-    url:  https://central-rhacs-operator.apps.lab.ocp.lan/v1/init-bundle
+    url:  https://central-rhacs-operator.apps.lab.ocp.lan/v1/cluster-init/init-bundles
     method: POST  
     body: 
       name: "ocp_lab"
     headers:
       Content-Type: "application/json"
-      accept: "application/json"
       Authorization: "Bearer {{ acs_token.json.token }}"
+      accept: "application/json"
     validate_certs: no
     body_format: json
   register: init_bundle
