@@ -77,6 +77,7 @@
       content-type: "application/json"  
     validate_certs: no
     body_format: json
+    status_code: [200, 201]
   register: cred
 
 
