@@ -34,7 +34,7 @@
     url:  https://central-rhacs-operator.apps.lab.ocp.lan/v1/cluster-init/init-bundles
     method: POST  
     body: 
-      name: "ocp_lab"
+      name: "init_bundle_{{ ocp_cluster_name }}"
     headers:
       Content-Type: "application/json"
       Authorization: "Bearer {{ acs_token.json.token }}"
@@ -65,7 +65,7 @@
     url:  https://192.168.34.21/api/controller/v2/credentials/
     method: POST
     body: 
-      name: "ecs_init_bundle"
+      name: "ecs_init_bundle_{{ ocp_cluster_name }}"
       credential_type: "{{ cred_type.json.results[0].id }}"
       organization: 1
       inputs: 
