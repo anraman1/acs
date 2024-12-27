@@ -33,7 +33,7 @@
     method: POST  
     body: 
       name: init-bundle
-      description: "init bundle
+      description: "init bundle"
     headers:
       Content-Type: "application/json"
       Authorization: "Bearer {{ acs_token.json.token }}"
