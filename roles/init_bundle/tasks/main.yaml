@@ -38,6 +38,7 @@
       description: "init bundle"
     headers:
       Content-Type: "application/json"
+      accept: "application/json"
       Authorization: "Bearer {{ acs_token.json.token }}"
     validate_certs: no
   register: init_bundle
