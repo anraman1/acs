@@ -42,6 +42,9 @@
     validate_certs: no
     body_format: json
   register: init_bundle
+- name: get the init-bundle
+  debug:
+    msg: "{{ init_bundle.json }}"
 - name: get the credintials type
   uri:
     url:  https://192.168.34.21/api/controller/v2/credential_types/?name=ecs_init_bundle
@@ -57,7 +60,23 @@
 - name: get the credintials type
   debug:
     msg: "{{ cred_type.json.results[0].id }}"
-
+- name: create init-bundle credentials
+  uri:
+    url:  https://192.168.34.21/api/controller/v2/credentials
+    method: POST
+    body: 
+      name: "ecs_init_bundle"
+      credential_type: "{{ cred_type.json.results[0].id }}"
+      data: 
+        init_bundle: "{{ init_bundle.json.id }}"
+    user: admin
+    password: db
+    force_basic_auth: true
+    headers:
+      content-type: "application/json"  
+    validate_certs: no
+    body_format: json
+  register: cred
 
 
 
