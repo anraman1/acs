@@ -1,8 +1,8 @@
-# Following ansible task to validate the acs opertor and to create a init-bundle
+## Following ansible task to validate the acs opertor and to create a init-bundle
 
-## extra_vars 
-# by default 
-  - it will create a init-bundle as init_bundle_{ocp_cluster_name}
+# extra_vars 
+  
+  - by default,it will create a init-bundle as init_bundle_{ocp_cluster_name}
   - if you want custom name, please pass extra_vars:
      'init_bundle_name': < bundle_name >
       this name will be siffix to init_bundle_{ocp_cluster_name}_{init_bundle_name}
@@ -26,7 +26,8 @@
 required:
   - init_bundle
 
-# Injector configuration
+```
+## Injector configuration
 
 ```
 env:
