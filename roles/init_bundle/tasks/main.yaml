@@ -46,9 +46,9 @@
   uri:
     url:  https://192.168.34.21/api/controller/v2/credential_types/?name=ecs_init_bundle
     method: GET
-    body: 
-      username: "admin"
-      password: "db"
+    user: admin
+    password: db
+    force_basic_auth: true
     headers:
       content-type: "application/json"
     validate_certs: no
