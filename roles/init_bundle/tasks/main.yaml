@@ -30,11 +30,13 @@
   debug:
     msg: "{{ acs_token.json.token }}"
 - name: create init-bundle
+  vars:
+    init_bundle_name: "init_bundle_{{ ocp_cluster_name }}"
   uri:
     url:  https://central-rhacs-operator.apps.lab.ocp.lan/v1/cluster-init/init-bundles
     method: POST  
     body: 
-      name: "init_bundle_{{ ocp_cluster_name }}"
+      name: "{{ init_bundle_name }}"
     headers:
       Content-Type: "application/json"
       Authorization: "Bearer {{ acs_token.json.token }}"
