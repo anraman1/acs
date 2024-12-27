@@ -4,7 +4,7 @@
   
   - by default,it will create a init-bundle as init_bundle_{ocp_cluster_name}
   - if you want custom name, please pass extra_vars: \
-     **'init_bundle_name': < bundle_name >**
+     **'init_bundle_name': < bundle_name >** \
       this name will be siffix to init_bundle_{ocp_cluster_name}_{init_bundle_name}
   - same format will be used when creating init-bundle-credential in AAP
     ecs_init_bundle_{ocp_cluster_name}_{init_bundle_name} when passing extra_vars
