@@ -41,4 +41,5 @@
       accept: "application/json"
       Authorization: "Bearer {{ acs_token.json.token }}"
     validate_certs: no
+    body_format: json
   register: init_bundle
