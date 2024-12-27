@@ -4,7 +4,7 @@
       kind: ClusterServiceVersion  
       namespace: rhacs-operator
       label_selectors:
-        - operators.coreos.com/rhacs-operator.rhacs-operator
+        - operators.coreos.com/rhacs-operator1.rhacs-operator
     environment:
       KUBECONFIG: ecslab-kubeconfig
     register: acs_status
